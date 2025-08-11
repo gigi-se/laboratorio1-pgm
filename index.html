@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reino de los numeros </title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="esp">
+    <h1>Contador de primos</h1>
+    <input id="entrada1" type="number" min="0" placeholder="L" />
+    <input id="entrada2" type="number" min="0" placeholder="R" />
+    <button id="contarbtn">Contar</button>
+    <div id="res" class=" ">Resultado: </div>
+    <div id="mo" class="mo"></div>
+  </div>
+
+  <script>
+    const entrada1 = document.getElementById('entrada1');
+    const entrada2 = document.getElementById('entrada2');
+    const contarbtn = document.getElementById('contarbtn');
+    const res = document.getElementById('res');
+    const mo = document.getElementById('mo');
+
+    function primo(n) {
+      if (n < 2) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+
+    contarbtn.addEventListener('click', () => {
+      let L = Number(entrada1.value);
+      let R = Number(entrada2.value);
+
+      if (L === 0 && R === 0) {
+        res.textContent = 'Resultado: ';
+        mo.innerHTML = '';
+        return;
+      }
+
+      if (L > R) {
+        res.textContent = 'L no puede ser mayor que R :c ';
+        return;
+      }
+
+      let cont = 0;
+      for (let num = L; num <= R; num++) {
+        if (primo(num))  cont++;
+      }
+
+      res.textContent = `Resultado: hay ${cont} primos`;
+      const item = document.createElement('div');
+      item.textContent = `${L} - ${R} → ${cont}`;
+      mo.prepend(item);
+    });
+  </script>
+</body>
+</html>
