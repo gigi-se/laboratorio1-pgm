@@ -9,8 +9,9 @@
 <body>
   <div class="esp">
     <h1>Contador de primos</h1>
-    <input id="entrada1" type="number" min="0" placeholder="L" />
-    <input id="entrada2" type="number" min="0" placeholder="R" />
+    
+    <input id="entrada1" type="number" min="0" placeholder="entrada 1" />
+    <input id="entrada2" type="number" min="0" placeholder="entrada 2" />
     <button id="contarbtn">Contar</button>
     <div id="res" class=" ">Resultado: </div>
     <div id="mo" class="mo"></div>
@@ -42,7 +43,7 @@
       }
 
       if (L > R) {
-        res.textContent = 'L no puede ser mayor que R :c ';
+        res.textContent = 'la entrada 1 no puede ser mayor que la entrada 2 :c ';
         return;
       }
 
@@ -56,6 +57,10 @@
       item.textContent = `${L} - ${R} → ${cont}`;
       mo.prepend(item);
     });
+
+
   </script>
+
+
 </body>
 </html>
